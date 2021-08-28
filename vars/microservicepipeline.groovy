@@ -23,8 +23,10 @@ def call(Map params) {
           }
            stage("Run Container"){
               steps{
+                script {
                  runcontainer([hostipwithuser: "${params.hostipwithuser}", server: "${params.server}", containername: "${params.containername}", hostport: "${params.hostport}", containerport: "${params.containerport}", imagename: "${params.imagename}"])
-             }  
+                } 
+              }   
           }  
       }
   }
