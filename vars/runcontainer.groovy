@@ -1,5 +1,7 @@
 def call(Map params){  
     sshagent(["${params.server}"]) {
-      sh "docker run -it --name "${params.containername}" -p "${params.hostport}":"${params.containerport}" --network=Bridge "${params.imagename}""
+      sh "sudo docker run -d -p "${params.hostport}":"${params.containerport}" --network=Bridge --name "${params.containername}" "${params.imagename}""
+        sudo docker run -d -p 8787:8787 --name samplename user/laatste
+
     }
 }
