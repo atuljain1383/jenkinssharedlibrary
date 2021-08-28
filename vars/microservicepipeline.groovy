@@ -20,7 +20,12 @@ def call(Map params) {
               steps{
                  pushdockerimage([username: "${params.dockerhubuserid}", password: "${params.dockerhubpassword}", imagename: "${params.imagename}"])
              }  
-          }        
+          }
+          stage("Run Container"){
+              steps{
+                 runcontainer([server: "${params.server}", containername: "${params.containername}", hostport: "${params.hostport}", containerport: "${params.containerport}", imagename: "${params.imagename}"])
+             }  
+          }  
       }
   }
 }
