@@ -9,7 +9,7 @@ def call(Map params) {
           }
           stage("Build Image"){             
               steps{
-                  dir("/var/lib/jenkins/workspace/OrderManagemenService/services/ordermanagement") {
+                  dir(${params.jenkinsdir}) {
                       script{
                               builddockerimage([imagename: ${params.imagename}])
                       }
