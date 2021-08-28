@@ -4,21 +4,21 @@ def call(Map params) {
       stages{
           stage("Checkout"){
               steps{
-                gitcheckout([branch: ${params.branchname}, giturl: ${params.giturl}])
+                gitcheckout([branch: "${params.branchname}", giturl: "${params.giturl}"])
               }
           }
           stage("Build Image"){             
               steps{
-                  dir(${params.jenkinsdir}) {
+                  dir("${params.jenkinsdir}") {
                       script{
-                              builddockerimage([imagename: ${params.imagename}])
+                              builddockerimage([imagename: "${params.imagename}"])
                       }
                   }                    
               }
           }
           stage("Push Image"){
               steps{
-                 pushdockerimage([username: ${params.dockerhubuserid}, password: ${params.dockerhubpassword}, imagename: ${params.imagename}])
+                 pushdockerimage([username: "${params.dockerhubuserid}", password: "${params.dockerhubpassword}", imagename: "${params.imagename}"])
              }  
           }        
       }
